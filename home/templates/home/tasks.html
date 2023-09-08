@@ -1,0 +1,17 @@
+
+{% extends "home/base2.html" %}
+{% load static %}
+{% block title %}Tasks {% endblock %}
+
+{% block content %}
+<div class="m-4">
+    <h2>Your Tasks</h2>
+    {% for task in tasks %}
+    <p class="mt-4"><span class="text-danger font-20">Title: </span>{{task.title}} <span class="text-danger font-20">Description: </span>{{task.description}} <span class="text-danger font-20">
+        Due date: </span> {{task.due_date}} <span class="text-danger font-20">Status: </span><span >{{task.status}}</span>
+        <span class="btn btn-info"><a class="text-white" href="{% url 'view-task' task.id %}">View</a></span>
+         <span class="text-white btn btn-success"><a href="{% url 'update-task' task.id %}">Update</a></span> 
+         <span class="text-white btn btn-danger"><a href="{% url 'delete-task' task.id %}">Delete</a></span></p><hr>
+    {% endfor %}
+</div>
+{% endblock %}
